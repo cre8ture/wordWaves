@@ -97,13 +97,13 @@ function setup() {
   myDiv = createDiv().parent(document.body);
   myDiv.class('myDiv');
   myDiv.style('color', 'white');
-    myDiv.style('font-family', 'Courier');
+  myDiv.style('font-family', 'Courier');
   myDiv.style('font-size', '20px');
-    myDiv.position(input.x, input.y - myDiv.height - 25);
-  
-// console.log("Before position:", myDiv.position());
-// myDiv.position(input.x, input.y - myDiv.height - 50);
-// console.log("After position:", myDiv.position());
+  myDiv.position(input.x, input.y - myDiv.height - 25);
+
+  // console.log("Before position:", myDiv.position());
+  // myDiv.position(input.x, input.y - myDiv.height - 50);
+  // console.log("After position:", myDiv.position());
 
   // set the text of the div element to the value of myVariable
   // if (gradeLevel > 0) {
@@ -155,10 +155,10 @@ function draw() {
   background(51, 10);
 
   myDiv.html("The waves change based on the readability of your text");
-  
+
   if (gradeLevel) {
     myDiv.html("Grade reading level: " + gradeLevel);
-    console.log("myDiv", gradeLevel, myDiv)
+    // console.log("myDiv", gradeLevel, myDiv)
 
   }
   // Add event listener to the button
@@ -173,7 +173,7 @@ function draw() {
 
 
     // Log grade level to console for testing
-    console.log('Grade level:', gradeLevel);
+    // console.log('Grade level:', gradeLevel);
   });
 
   // Draw stars
@@ -217,7 +217,7 @@ function draw() {
     for (let x = 0; x <= width; x += 10) {
       let y = map(noise(xoff, yoff, zoff), 0, 1, 2 * height / 3, height / 6);
       if (gradeLevel) {
-       y = y * Math.abs(gradeLevel)
+        y = y * Math.abs(gradeLevel)
       }
       let textX = x + random(-20, 20);
       let textY = y + random(-10, 10) + height / 2;
