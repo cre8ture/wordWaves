@@ -234,5 +234,5 @@ function draw() {
       xoff += 0.05;
       zoff += 0.09;
     }
-  }
+  } 
 }
