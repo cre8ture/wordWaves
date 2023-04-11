@@ -1,0 +1,24 @@
+html, body {
+  height: 100%;
+  width: 100%;
+  background: black;
+}
+
+canvas {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.my-textarea {
+  background-color: grey;
+  color: white;
+  padding: 10px;
+  border: none;
+  height: 150px;
+}
+
+.my-textarea::placeholder {
+  color: #ddd;
+}
