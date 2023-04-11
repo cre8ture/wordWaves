@@ -120,20 +120,20 @@ function setup() {
   button.position(input.x + input.width - button.width + 15, input.y + input.height + 25);
 
 
-  // Add event listener to the button
-  button.mousePressed(() => {
-    // Get the text from the textarea
-    const text = input.value();
+  // // Add event listener to the button
+  // button.mousePressed(() => {
+  //   // Get the text from the textarea
+  //   const text = input.value();
 
-    // Calculate grade level
-    gradeLevel = calculateReadability(text);
-    splitText = randomStringArray(text)
-    textGlobal = text;
+  //   // Calculate grade level
+  //   gradeLevel = calculateReadability(text);
+  //   splitText = randomStringArray(text)
+  //   textGlobal = text;
 
 
-    // Log grade level to console for testing
-    console.log('Grade level:', gradeLevel);
-  });
+  //   // Log grade level to console for testing
+  //   console.log('Grade level:', gradeLevel);
+  // });
 
   for (let i = 0; i < 50; i++) {
     let x = random(width);
@@ -161,6 +161,20 @@ function draw() {
     console.log("myDiv", gradeLevel, myDiv)
 
   }
+  // Add event listener to the button
+  button.mousePressed(() => {
+    // Get the text from the textarea
+    const text = input.value();
+
+    // Calculate grade level
+    gradeLevel = calculateReadability(text);
+    splitText = randomStringArray(text)
+    textGlobal = text;
+
+
+    // Log grade level to console for testing
+    console.log('Grade level:', gradeLevel);
+  });
 
   // Draw stars
   for (let i = 0; i < stars.length; i++) {
@@ -203,7 +217,7 @@ function draw() {
     for (let x = 0; x <= width; x += 10) {
       let y = map(noise(xoff, yoff, zoff), 0, 1, 2 * height / 3, height / 6);
       if (gradeLevel) {
-        y * gradeLevel
+       y = y * Math.abs(gradeLevel)
       }
       let textX = x + random(-20, 20);
       let textY = y + random(-10, 10) + height / 2;
