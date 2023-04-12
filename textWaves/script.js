@@ -158,7 +158,7 @@ function draw() {
 
   if (gradeLevel) {
     myDiv.html("Grade reading level: " + gradeLevel);
-    // console.log("myDiv", gradeLevel, myDiv)
+    console.log("myDiv", gradeLevel, myDiv)
 
   }
   // Add event listener to the button
@@ -173,7 +173,7 @@ function draw() {
 
 
     // Log grade level to console for testing
-    // console.log('Grade level:', gradeLevel);
+    console.log('Grade level:', gradeLevel);
   });
 
   // Draw stars
@@ -217,7 +217,7 @@ function draw() {
     for (let x = 0; x <= width; x += 10) {
       let y = map(noise(xoff, yoff, zoff), 0, 1, 2 * height / 3, height / 6);
       if (gradeLevel) {
-        y = y * Math.abs(gradeLevel)
+        y = y * MgradeLevel
       }
       let textX = x + random(-20, 20);
       let textY = y + random(-10, 10) + height / 2;
@@ -234,5 +234,5 @@ function draw() {
       xoff += 0.05;
       zoff += 0.09;
     }
-  } 
+  }
 }
