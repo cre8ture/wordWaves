@@ -18,12 +18,20 @@ function calculateReadability(text) {
   let numWords = words.length;
   let numSyllables = 0;
   for (let i = 0; i < numWords; i++) {
-    numSyllables += countSyllables(words[i]);
+    let syls = countSyllables(words[i])
+    if (syls){
+    numSyllables += countSyllables(words[i]);}
+    else{
+      numSyllables+=1
+    }
   }
 
   // Calculate grade level
   let gradeLevel = 0.39 * (numWords / numSentences) + 11.8 * (numSyllables / numWords) - 15.59;
 
+  if (!gradeLevel) {
+    return 7.01
+  }
   return gradeLevel;
 }
 
@@ -32,8 +40,10 @@ function countSyllables(word) {
   // Count the number of vowel groups in the word
   let numVowelGroups;
   if (word.length > 0) {
-    numVowelGroups = word.match(/[aeiouy]+/gi).length;
-
+    numVowelGroups = word.match(/[aeiouy]+/gi)
+    if (numVowelGroups) {
+      numVowelGroups = numVowelGroups.length;
+    }
     // Subtract the number of silent vowel groups (those at the end of the word)
     if (numVowelGroups) {
       if (word.endsWith('e')) {
@@ -170,8 +180,6 @@ function draw() {
     gradeLevel = calculateReadability(text);
     splitText = randomStringArray(text)
     textGlobal = text;
-
-
     // Log grade level to console for testing
     console.log('Grade level:', gradeLevel);
   });
@@ -217,7 +225,7 @@ function draw() {
     for (let x = 0; x <= width; x += 10) {
       let y = map(noise(xoff, yoff, zoff), 0, 1, 2 * height / 3, height / 6);
       if (gradeLevel) {
-        y = y * MgradeLevel
+        y = y * gradeLevel
       }
       let textX = x + random(-20, 20);
       let textY = y + random(-10, 10) + height / 2;
